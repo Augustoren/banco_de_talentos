@@ -10,7 +10,13 @@ const Company = mongoose.model("Company", CompanySchema);
 
 function validateCompany(company) {
   const schema = {
-    name: joi.string().required().min(5),
+    name: joi
+      .string()
+      .required()
+      .min(5)
+      .error(() => {
+        return { message: "Campo 'name' nao informado." };
+      }),
     email: joi.string().required().min(5),
   };
   return joi.validate(company, schema);

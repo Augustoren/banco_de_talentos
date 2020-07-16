@@ -22,3 +22,9 @@ routes.post("/positions", PositionController.store);
 routes.get("/profile", ProfileController.show);
 
 module.exports = routes;
+
+/* 
+
+TODO: Adicionar validacao de headers nas rotas que necessiarem.
+
+*/

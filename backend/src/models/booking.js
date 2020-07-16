@@ -2,10 +2,6 @@ const mongoose = require("mongoose");
 const joi = require("joi");
 
 const bookingSchema = new mongoose.Schema({
-  company: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Company",
-  },
   candidate: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Candidate",
@@ -13,6 +9,10 @@ const bookingSchema = new mongoose.Schema({
   position: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Position",
+  },
+  company: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Company",
   },
 });
 

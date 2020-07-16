@@ -17,7 +17,9 @@ function validateCandidate(candidate) {
       .string()
       .required()
       .min(11)
-      .error("Campo 'phone' e obrigatorio."),
+      .error(() => {
+        return new Error("Campo 'phone' e obrigatorio.");
+      }),
   };
   return joi.validate(candidate, schema);
 }

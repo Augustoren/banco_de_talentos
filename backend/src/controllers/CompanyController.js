@@ -10,9 +10,14 @@ module.exports = {
     const { error } = validateCompany(req.body);
     if (error) return res.status(400).json(error.details[0].message);
 
-    let company = await Company.findOne({ email: req.body.email });
+    let company = await Company.findOne({
+      $or: [{ email: req.body.email }, { name: req.body.name }],
+    });
+
     if (company)
-      return res.json({ message: "Company already exists with this e-mail" });
+      return res.json({
+        message: "Company already exists with this name or e-mail",
+      });
 
     company = await Company.create(req.body);
 

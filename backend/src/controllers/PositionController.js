@@ -15,7 +15,9 @@ module.exports = {
     if (error) return res.status(400).json(error.details[0].message);
     const { title } = req.body;
 
-    const company = await Company.findOne({ _id: company_id });
+    const company = await Company.findOne({ _id: company_id }).catch((err) => {
+      return res.status(400).json({ message: "Invalid company id." });
+    });
     if (!company)
       return res.status(400).json({ message: "Company does not exists" });
 

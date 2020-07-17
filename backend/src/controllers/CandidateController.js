@@ -22,7 +22,7 @@ module.exports = {
     if (error) return res.status(400).json(error.details[0].message);
 
     let candidate = await Candidate.findOne({ email: req.body.email });
-    if (candidate) return res.json(candidate);
+    if (candidate) return res.json({ message: "User already registered." });
 
     candidate = await Candidate.create(req.body);
 

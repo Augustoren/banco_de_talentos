@@ -1,5 +1,6 @@
 const { Candidate, validateCandidate } = require("../models/Candidate");
 const { Booking } = require("../models/booking");
+const bcrypt = require("bcrypt");
 
 module.exports = {
   async index(req, res) {
@@ -23,6 +24,9 @@ module.exports = {
 
     let candidate = await Candidate.findOne({ email: req.body.email });
     if (candidate) return res.json({ message: "User already registered." });
+
+    const hash = await bcrypt.hash(req.body.password, 10);
+    req.body.password = hash;
 
     candidate = await Candidate.create(req.body);
 

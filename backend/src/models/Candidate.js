@@ -3,7 +3,10 @@ const joi = require("joi");
 
 const candidateSchema = new mongoose.Schema({
   name: String,
-  password: String,
+  password: {
+    type: String,
+    select: false,
+  },
   email: String,
   phone: String,
 });

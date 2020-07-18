@@ -6,6 +6,7 @@ const PositionController = require("./controllers/PositionController");
 const ProfileController = require("./controllers/ProfileController");
 const CandidateController = require("./controllers/CandidateController");
 const BookingController = require("./controllers/BookingController");
+const SessionController = require("./controllers/SessionController");
 
 routes.get("/", (req, res) => {
   return res.json({ message: "banco de talentos" });
@@ -30,5 +31,8 @@ routes.post("/candidates", CandidateController.store);
 //Booking routes
 routes.get("/bookings", BookingController.index);
 routes.post("/bookings", BookingController.store);
+
+//Session routes
+routes.post("/sessions", SessionController.store);
 
 module.exports = routes;

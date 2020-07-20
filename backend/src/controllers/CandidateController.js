@@ -1,11 +1,16 @@
 const { Candidate, validateCandidate } = require("../models/Candidate");
 const { Booking } = require("../models/booking");
 const bcrypt = require("bcrypt");
+const _ = require("lodash");
 
 module.exports = {
   async index(req, res) {
     const candidates = await Candidate.find();
-    return res.json(candidates);
+    return res.json(
+      candidates.map((user) => {
+        return _.pick(user, ["name", "email", "phone"]);
+      })
+    );
   },
 
   async show(req, res) {

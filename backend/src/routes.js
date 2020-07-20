@@ -9,7 +9,17 @@ const BookingController = require("./controllers/BookingController");
 const SessionController = require("./controllers/SessionController");
 
 routes.get("/", (req, res) => {
-  return res.json({ message: "banco de talentos" });
+  return res.json({
+    message: "banco de talentos",
+    resources: {
+      company: "http://localhost:3000/company",
+      position: "http://localhost:3000/position",
+      profile: "http://localhost:3000/profile",
+      candidate: "http://localhost:3000/candidate",
+      bookings: "http://localhost:3000/bookings",
+      session: "http://localhost:3000/session",
+    },
+  });
 });
 
 //Company routes

@@ -1,0 +1,29 @@
+.login-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 260px;
+}
+
+form label {
+  font-size: 24px;
+  font-family: sans-serif;
+  margin-bottom: 14px;
+}
+
+form input {
+  font-size: 24px;
+  font-family: sans-serif;
+  margin-bottom: 14px;
+}
+
+.btn {
+  width: 100%;
+  border: 1px solid;
+  height: 50px;
+  text-align: center;
+}

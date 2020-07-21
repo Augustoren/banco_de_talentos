@@ -1,6 +1,8 @@
 const { Candidate } = require("../models/Candidate");
 const bcrypt = require("bcrypt");
 const joi = require("joi");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
 module.exports = {
   async store(req, res) {
@@ -25,6 +27,7 @@ module.exports = {
     if (!passwordIsValid)
       return res.status(400).json({ message: "Invalid e-mail or password." });
 
-    return res.json({ ok: true });
+    const token = jwt.sign({ email, password }, config.get("JwtPrivateKey"));
+    return res.json(token);
   },
 };

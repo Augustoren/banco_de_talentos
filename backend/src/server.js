@@ -12,6 +12,12 @@ if (!dbkey) {
   process.exit(1);
 }
 
+const jwtpk = config.get("JwtPrivateKey");
+if (!jwtpk) {
+  console.error("FATAL ERROR: JWT private key was not provided.");
+  process.exit(1);
+}
+
 mongoose
   .connect(dbkey, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {

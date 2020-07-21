@@ -1,3 +1,4 @@
 {
-  "db_access_string": ""
+  "db_access_string": "",
+  "JwtPrivateKey": ""
 }

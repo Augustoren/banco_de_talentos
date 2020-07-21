@@ -28,6 +28,6 @@ module.exports = {
       return res.status(400).json({ message: "Invalid e-mail or password." });
 
     const token = jwt.sign({ email, password }, config.get("JwtPrivateKey"));
-    return res.json(token);
+    return res.header("X-access-token", token).send();
   },
 };

@@ -1,4 +1,4 @@
-# BANCO DE TALENTOS
+# BANCO DE TALENTOS - BACKEND
 
 Uma API REST de banco de talentos: Cadastre empresas, Cadastre vagas de emprego, cadastre candidados. Exiba suas vagas e obtenha os dados do candidados interessados.
 

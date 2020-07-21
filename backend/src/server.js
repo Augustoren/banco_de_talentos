@@ -2,19 +2,17 @@ const express = require("express");
 const cors = require("cors");
 const routes = require("./routes");
 const mongoose = require("mongoose");
-const config = require("config");
+require("dotenv").config();
 
 const app = express();
 
-const dbkey = config.get("db_access_string");
-if (!dbkey) {
-  console.error("FATAL ERROR: Database access string was not provided.");
-  process.exit(1);
-}
+const dbkey = process.env.MONGO_KEY;
+const jwtpk = process.env.JWTPK;
 
-const jwtpk = config.get("JwtPrivateKey");
-if (!jwtpk) {
-  console.error("FATAL ERROR: JWT private key was not provided.");
+if (!dbkey && !jwtpk) {
+  console.error(
+    "FALTA ERROR: Mongodb access string or JWT private key were not provided."
+  );
   process.exit(1);
 }
 

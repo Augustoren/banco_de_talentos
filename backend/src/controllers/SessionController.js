@@ -2,7 +2,6 @@ const { Candidate } = require("../models/Candidate");
 const bcrypt = require("bcrypt");
 const joi = require("joi");
 const jwt = require("jsonwebtoken");
-const config = require("config");
 
 module.exports = {
   async store(req, res) {
@@ -27,7 +26,7 @@ module.exports = {
     if (!passwordIsValid)
       return res.status(400).json({ message: "Invalid e-mail or password." });
 
-    const token = jwt.sign({ email, password }, config.get("JwtPrivateKey"));
+    const token = jwt.sign({ email, password }, process.env.JWTPK);
     return res.header("X-access-token", token).send();
   },
 };
